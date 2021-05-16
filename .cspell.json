@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "minWordLength": 2,
+  "files": ["**/*"],
+  "ignorePaths": [
+    "*.lock",
+    "*.json",
+    "dist"
+  ],
+  "words": []
+}

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "tsc && node dist/index.js"
+    "build": "tsc && node dist/index.js",
+    "typo": "cspell --no-progress"
   },
   "keywords": [
     "react",
@@ -20,6 +21,7 @@
   "author": "Mathews Machado <mathews.machadoamorim@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "cspell": "^5.4.1",
     "typescript": "^4.2.4"
   }
 }
