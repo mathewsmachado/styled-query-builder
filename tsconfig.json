@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "jsx": "react",                           
+    "declaration": true,
+    "sourceMap": true,                             
+    "removeComments": true,    
+    "noEmit": false,
+    "outDir": "dist",
+    "strict": true,
+    "moduleResolution": "node",   
+    "baseUrl": "./src",  
+    "esModuleInterop": true,     
+    "skipLibCheck": true,   
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "src/**/*.test.tsx",
+    "src/**/*.test.ts"
+  ]
+}
