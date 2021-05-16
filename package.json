@@ -6,7 +6,9 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc && node dist/index.js",
-    "typo": "cspell --no-progress"
+    "typo": "cspell --no-progress",
+    "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore",
+    "format": "prettier . --write --ignore-path .gitignore"
   },
   "keywords": [
     "react",
@@ -21,7 +23,16 @@
   "author": "Mathews Machado <mathews.machadoamorim@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
     "cspell": "^5.4.1",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-jest-dom": "^3.9.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-testing-library": "^4.4.0",
     "prettier": "2.3.0",
     "typescript": "^4.2.4"
   }
