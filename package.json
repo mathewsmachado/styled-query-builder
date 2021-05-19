@@ -10,7 +10,8 @@
     "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore",
     "format": "prettier . --write --ignore-path .gitignore",
     "test": "jest --maxWorkers=50%",
-    "test:watch": "jest --maxWorkers=25% --watch"
+    "test:watch": "jest --maxWorkers=25% --watch",
+    "prepare": "husky install"
   },
   "keywords": [
     "react",
@@ -48,6 +49,7 @@
     "styled-components": "^5.3.0",
     "ts-jest": "^26.5.6",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "husky": "^6.0.0"
   }
 }
