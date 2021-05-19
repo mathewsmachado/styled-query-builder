@@ -2,6 +2,12 @@
   "language": "en",
   "minWordLength": 2,
   "files": ["**/*"],
-  "ignorePaths": ["*.lock", "*.json", "*.config.*", "dist", "coverage"],
+  "ignorePaths": [
+    "dist",
+    "coverage",
+    "*.lock",
+    "package.json",
+    "jest.config.*"
+  ],
   "words": []
 }
