@@ -1,5 +1,5 @@
-function queryBuilder(...query: string[]): void {
-  console.log(query.join(' '));
+export function queryBuilder(...query: string[]): string {
+  return query.join(' ');
 }
 
-queryBuilder('Am', 'I', 'working', '?');
+console.log(queryBuilder('Am', 'I', 'working', '?'));

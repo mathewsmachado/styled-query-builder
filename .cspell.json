@@ -2,6 +2,6 @@
   "language": "en",
   "minWordLength": 2,
   "files": ["**/*"],
-  "ignorePaths": ["*.lock", "*.json", "dist"],
+  "ignorePaths": ["*.lock", "*.json", "*.config.*", "dist", "coverage"],
   "words": []
 }
