@@ -5,9 +5,10 @@
   "ignorePaths": [
     "dist",
     "coverage",
+    ".husky",
     "*.lock",
-    "package.json",
-    "jest.config.*"
+    "./*.json",
+    "*.config.*"
   ],
   "words": []
 }
