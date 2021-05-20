@@ -6,17 +6,14 @@
     "allowJs": true,
     "jsx": "react",
     "declaration": true,
-    "sourceMap": true,
-    "removeComments": true,
-    "noEmit": false,
-    "outDir": "dist",
     "strict": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "build" // Cannot write file '{{ file.name }}' because it would overwrite input file.
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "exclude": ["node_modules", "build", "coverage"]
 }

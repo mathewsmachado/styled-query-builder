@@ -1,4 +1,5 @@
 {
   "*": ["yarn typo"],
-  "*.{js,jsx,ts,tsx}": ["yarn lint", "yarn test"]
+  "*.{ts,tsx}": ["yarn typecheck"],
+  "*.{js,jsx,ts,tsx}": ["yarn lint", "yarn test --findRelatedTests"]
 }
