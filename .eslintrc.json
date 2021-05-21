@@ -1,0 +1,29 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/react"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/prefer-default-export": "off", // vscode intellisense works better with named exports
+    "react/react-in-jsx-scope": "off", // newer versions of react allows to use jsx without importing react package
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }], // rule that doesn't allow to import devDependencies packages
+    "comma-dangle": "off", // insert comma in last line of an object/array: conflicts with prettier config
+    "@typescript-eslint/comma-dangle": "off" // insert comma in last line of an object/array: conflicts with prettier config
+  }
+}
