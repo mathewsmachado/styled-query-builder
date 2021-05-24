@@ -26,6 +26,7 @@
     "comma-dangle": "off", // insert comma in last line of an object/array: conflicts with prettier config
     "@typescript-eslint/comma-dangle": "off", // insert comma in last line of an object/array: conflicts with prettier config
     "object-curly-newline": "off", // insert a new line before brackets closing: conflicts with prettier config
-    "operator-linebreak": ["error", "after"] // if line is too long, insert a linebreak before the operator: conflicts with prettier
+    "operator-linebreak": "off" // if line is too long, insert a linebreak before the operator: conflicts with prettier
+
   }
 }
