@@ -11,12 +11,14 @@ type UserSize = keyof Breakpoints | string | number;
 
 type UserSizes = [UserSize, UserSize] | UserSize;
 
+type AntiOverlap = Omit<UserSize, keyof Breakpoints>;
+
 type ErrorLiable<ReturnType> = Error | ReturnType;
 
 type BreakpointBuilder = (
   mediaQueryType: MediaQueryType,
   userSizes: UserSizes,
-  antiOverlap?: UserSize
+  antiOverlap?: AntiOverlap
 ) => ErrorLiable<string>;
 
 function breakpointBuilder(
@@ -32,7 +34,7 @@ function breakpointBuilder(
   function singleBreakpoint(
     mediaQueryType: MediaQueryType,
     userSizes: UserSizes,
-    antiOverlap: UserSize
+    antiOverlap: AntiOverlap
   ): ErrorLiable<string> {
     // eslint-disable-next-line no-param-reassign
     userSizes = userSizes as number;
@@ -69,7 +71,7 @@ function breakpointBuilder(
   function breakpoints(
     mediaQueryType: MediaQueryType,
     userSizes: UserSizes,
-    antiOverlap: UserSize = 0
+    antiOverlap: AntiOverlap = 0
   ): ErrorLiable<string> {
     if (mediaQueryType !== 'between') {
       return singleBreakpoint(mediaQueryType, userSizes, antiOverlap);
