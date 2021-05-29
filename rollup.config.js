@@ -12,8 +12,8 @@ const tsconfigOverride = {
     'src/**/*.test.tsx',
     'src/**/*.test.js',
     'src/**/*.test.jsx',
+    'jest.*',
     '*.config.*',
-    'setupTests.ts',
   ],
 };
 
