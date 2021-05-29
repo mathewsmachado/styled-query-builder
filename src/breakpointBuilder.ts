@@ -89,4 +89,11 @@ function breakpointBuilder(
   return breakpoints;
 }
 
-export { breakpointBuilder, BreakpointBuilder, Breakpoints, SizeUnit };
+export {
+  breakpointBuilder,
+  BreakpointBuilder,
+  Breakpoints,
+  SizeUnit,
+  UserSize,
+  AntiOverlap,
+};
