@@ -105,4 +105,4 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
   return breakpointFunction;
 }
 
-export { AntiOverlap, breakpoint, Breakpoints, Size, SizeUnit };
+export { AntiOverlap, breakpoint, Breakpoints, Size, Sizes, SizeUnit };

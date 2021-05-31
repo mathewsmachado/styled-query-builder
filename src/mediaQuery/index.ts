@@ -7,6 +7,7 @@ import {
   breakpoint,
   Breakpoints,
   Size,
+  Sizes,
   SizeUnit,
 } from 'breakpoint';
 
@@ -17,7 +18,7 @@ type StyledCustomFunction = (cssProps: CssProps) => FlattenSimpleInterpolation;
 type MediaQuery = {
   above: (userSize: Size, antiOverlap?: AntiOverlap) => StyledCustomFunction;
   below: (userSize: Size, antiOverlap?: AntiOverlap) => StyledCustomFunction;
-  between: () => any;
+  between: (userSizes: Sizes) => StyledCustomFunction;
 };
 
 function mediaQuery(
@@ -70,7 +71,17 @@ function mediaQuery(
     `;
   }
 
-  function between() {}
+  function between(userSizes: Sizes): StyledCustomFunction {
+    const [userSizeOne, userSizeTwo] = userSizes as Size[];
+    const normalizedSizeOne = normalizeSize(userSizeOne);
+    const normalizedSizeTwo = normalizeSize(userSizeTwo);
+
+    return (...cssProps) => css`
+      @media ${breakpoints('between', [normalizedSizeOne, normalizedSizeTwo])} {
+        ${css(...cssProps)}
+      }
+    `;
+  }
 
   return { above, below, between };
 }

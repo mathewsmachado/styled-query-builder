@@ -202,3 +202,52 @@ describe('below', () => {
     });
   });
 });
+
+describe('between', () => {
+  const { between } = mediaQuery(breakpoints, 'px');
+
+  it('should receive sizes into an array and return a function', () => {
+    expect(between(['lg', 'sm'])).toStrictEqual(expect.any(Function));
+    expect(between(['1024', 576])).toStrictEqual(expect.any(Function));
+    expect(between([1024, 'sm'])).toStrictEqual(expect.any(Function));
+  });
+
+  it('should throw an error if a size is passed with a unit', () => {
+    expect(() => between(['768px', 2])).toThrow();
+    expect(() => between([768, '2px'])).toThrow();
+  });
+
+  it(`should apply the passed style only if the component is between than
+  what is defined in the function call`, () => {
+    const Component = styled.h1`
+      color: #000000;
+      ${between(['lg', 'md'])`color: #FAF712;`};
+    `;
+    render(<Component>Hello, world!</Component>);
+    const component = screen.getByRole('heading');
+
+    expect(component).toHaveStyle('color: #000000');
+    expect(component).toHaveStyleRule('color', '#FAF712', {
+      media: '(min-width: 1024px) and (max-width: 768px)',
+    });
+  });
+
+  it('should accept interpolations', () => {
+    const colorKey = 'color';
+    const colorValue = '#FAF712';
+
+    const Component = styled.h1`
+      color: #000000;
+      // fix this typescript issue
+      ${between([768, 1])`${`${colorKey} ${colorValue}`};`}
+    `;
+
+    render(<Component>Hello, world!</Component>);
+    const component = screen.getByRole('heading');
+
+    expect(component).toHaveStyle('color: #000000');
+    expect(component).toHaveStyleRule('color', '#FAF712', {
+      media: '(min-width: 768px) and (max-width: 1px)',
+    });
+  });
+});
