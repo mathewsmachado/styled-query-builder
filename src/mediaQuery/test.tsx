@@ -73,7 +73,6 @@ describe('above', () => {
     const Component = styled.h1`
       color: #000000;
       ${above('lg', 1)`color: #FAF712;`}
-      ${above('lg', 1)`color: #FAF712;`}
       ${above('md', '2')`color: #12F7FA;`}
     `;
 
@@ -111,6 +110,95 @@ describe('above', () => {
     });
     expect(component).toHaveStyleRule('color', '#12F7FA', {
       media: '(min-width: 769px)',
+    });
+  });
+});
+
+describe('below', () => {
+  const { below } = mediaQuery(breakpoints, 'rem');
+
+  it('should receive a size and an antiOverlap and return a function', () => {
+    expect(below('md')).toStrictEqual(expect.any(Function));
+    expect(below('768')).toStrictEqual(expect.any(Function));
+    expect(below(768)).toStrictEqual(expect.any(Function));
+    expect(below('md', 2)).toStrictEqual(expect.any(Function));
+    expect(below('md', '2')).toStrictEqual(expect.any(Function));
+  });
+
+  it('should throw an error if size is passed with a unit', () => {
+    expect(() => below('768rem', 2)).toThrow();
+  });
+
+  it('should throw an error if antiOverlap is passed with a unit', () => {
+    expect(() => below(768, '2rem')).toThrow();
+  });
+
+  it(`should apply the passed style only if the component is greater than what
+  is defined in the function call`, () => {
+    const Component = styled.h1`
+      color: #000000;
+      ${below('lg')`color: #FAF712;`}
+      ${below('768')`color: #12F7FA;`}
+      ${below(576)`color: #F712FA;`}
+    `;
+
+    render(<Component>Hello, world!</Component>);
+    const component = screen.getByRole('heading');
+
+    expect(component).toHaveStyle('color: #000000');
+    expect(component).toHaveStyleRule('color', '#FAF712', {
+      media: '(max-width: 1024rem)',
+    });
+    expect(component).toHaveStyleRule('color', '#12F7FA', {
+      media: '(max-width: 768rem)',
+    });
+    expect(component).toHaveStyleRule('color', '#F712FA', {
+      media: '(max-width: 576rem)',
+    });
+  });
+
+  it(`should apply the passed style only if the component is greater than what
+  is defined in the function call + the antiOverlap property`, () => {
+    const Component = styled.h1`
+      color: #000000;
+      ${below('lg', 1)`color: #FAF712;`}
+      ${below('md', '2')`color: #12F7FA;`}
+    `;
+
+    render(<Component>Hello, world!</Component>);
+    const component = screen.getByRole('heading');
+
+    expect(component).toHaveStyle('color: #000000');
+    expect(component).toHaveStyleRule('color', '#FAF712', {
+      media: '(max-width: 1023rem)',
+    });
+    expect(component).toHaveStyleRule('color', '#12F7FA', {
+      media: '(max-width: 766rem)',
+    });
+  });
+
+  it('should accept interpolations', () => {
+    const colorKeyOne = 'color';
+    const colorValueOne = '#FAF712';
+    const colorKeyTwo = 'color:';
+    const colorValueTwo = '#12F7FA';
+
+    const Component = styled.h1`
+      color: #000000;
+      // fix this typescript issue
+      ${below('lg')`${colorKeyOne}: ${colorValueOne};`}
+      ${below(768, 1)`${`${colorKeyTwo} ${colorValueTwo}`};`}
+    `;
+
+    render(<Component>Hello, world!</Component>);
+    const component = screen.getByRole('heading');
+
+    expect(component).toHaveStyle('color: #000000');
+    expect(component).toHaveStyleRule('color', '#FAF712', {
+      media: '(max-width: 1024rem)',
+    });
+    expect(component).toHaveStyleRule('color', '#12F7FA', {
+      media: '(max-width: 767rem)',
     });
   });
 });

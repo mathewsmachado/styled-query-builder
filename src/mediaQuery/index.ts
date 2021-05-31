@@ -16,7 +16,7 @@ type StyledCustomFunction = (cssProps: CssProps) => FlattenSimpleInterpolation;
 
 type MediaQuery = {
   above: (userSize: Size, antiOverlap?: AntiOverlap) => StyledCustomFunction;
-  below: () => any;
+  below: (userSize: Size, antiOverlap?: AntiOverlap) => StyledCustomFunction;
   between: () => any;
 };
 
@@ -56,7 +56,20 @@ function mediaQuery(
     `;
   }
 
-  function below() {}
+  function below(
+    userSize: Size,
+    antiOverlap: AntiOverlap = 0
+  ): StyledCustomFunction {
+    const normalizedSize = normalizeSize(userSize);
+    const normalizedAntiOverlap = normalizeAntiOverlap(antiOverlap);
+
+    return (...cssProps) => css`
+      @media ${breakpoints('below', normalizedSize, normalizedAntiOverlap)} {
+        ${css(...cssProps)}
+      }
+    `;
+  }
+
   function between() {}
 
   return { above, below, between };
