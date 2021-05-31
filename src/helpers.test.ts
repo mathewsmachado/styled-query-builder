@@ -1,7 +1,8 @@
 import { hasLettersAndNumbers } from './helpers';
 
 describe('hasLettersAndNumbers', () => {
-  it('should return true if a string have letters and numbers and false otherwise', () => {
+  it(`should return true if a string have letters and numbers and false
+  otherwise`, () => {
     expect(hasLettersAndNumbers(768)).toBe(false);
     expect(hasLettersAndNumbers('768')).toBe(false);
     expect(hasLettersAndNumbers('768 1024')).toBe(false);

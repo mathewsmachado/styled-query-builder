@@ -9,7 +9,8 @@ import { mediaQuery } from '.';
 const breakpoints = { sm: 576, md: 768, lg: 1024 };
 
 describe('mediaQuery', () => {
-  it('should accept a breakpoints object and optionally a size unit and return an object with 3 other functions on first invocation', () => {
+  it(`should accept a breakpoints object and optionally a size unit and return
+  an object with 3 other functions on first invocation`, () => {
     expect(mediaQuery(breakpoints)).toStrictEqual({
       above: expect.any(Function),
       below: expect.any(Function),
@@ -35,12 +36,16 @@ describe('above', () => {
     expect(above('md', '2')).toStrictEqual(expect.any(Function));
   });
 
-  it('should throw an error if size or antiOverlap are passed with a unit', () => {
+  it('should throw an error if size is passed with a unit', () => {
     expect(() => above('768px', 2)).toThrow();
+  });
+
+  it('should throw an error if antiOverlap is passed with a unit', () => {
     expect(() => above(768, '2px')).toThrow();
   });
 
-  it('should apply the passed style only if the component is greater than what is defined in the function call', () => {
+  it(`should apply the passed style only if the component is greater than what
+  is defined in the function call`, () => {
     const Component = styled.h1`
       color: #000000;
       ${above('lg')`color: #FAF712;`}
@@ -63,7 +68,8 @@ describe('above', () => {
     });
   });
 
-  it('should apply the passed style only if the component is greater than what is defined in the function call + the antiOverlap property', () => {
+  it(`should apply the passed style only if the component is greater than what
+  is defined in the function call + the antiOverlap property`, () => {
     const Component = styled.h1`
       color: #000000;
       ${above('lg', 1)`color: #FAF712;`}
