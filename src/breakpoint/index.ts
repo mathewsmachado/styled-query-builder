@@ -42,7 +42,10 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
       const sizeWithOverlap =
         mediaQueryType === 'below' ? size - antiOverlap : size + antiOverlap;
 
-      return `(${mediaQueryTypeMapper[mediaQueryType]}-width: ${sizeWithOverlap}${sizeUnit})`;
+      return (
+        `(${mediaQueryTypeMapper[mediaQueryType]}-width: ` +
+        `${sizeWithOverlap}${sizeUnit})`
+      );
     },
   };
 

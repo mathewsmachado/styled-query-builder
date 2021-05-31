@@ -11,12 +11,12 @@ import {
 
 type CssProps = CSSObject | TemplateStringsArray;
 
-type StyledCustomFunction = (cssProps: CssProps) => FlattenSimpleInterpolation;
+type StyledFunction = (cssProps: CssProps) => FlattenSimpleInterpolation;
 
 type MediaQuery = {
-  above: (userSize: Size, antiOverlap?: AntiOverlap) => StyledCustomFunction;
-  below: (userSize: Size, antiOverlap?: AntiOverlap) => StyledCustomFunction;
-  between: (userSizes: Sizes) => StyledCustomFunction;
+  above: (size: Size, antiOverlap?: AntiOverlap) => StyledFunction;
+  below: (size: Size, antiOverlap?: AntiOverlap) => StyledFunction;
+  between: (sizes: Sizes) => StyledFunction;
 };
 
 function mediaQuery(
@@ -25,31 +25,25 @@ function mediaQuery(
 ): MediaQuery {
   const breakpoints = breakpoint(userBreakpoints, sizeUnit);
 
-  function above(
-    userSize: Size,
-    antiOverlap: AntiOverlap = 0
-  ): StyledCustomFunction {
+  function above(size: Size, antiOverlap: AntiOverlap = 0): StyledFunction {
     return (...cssProps) => css`
-      @media ${breakpoints('above', userSize, antiOverlap)} {
+      @media ${breakpoints('above', size, antiOverlap)} {
         ${css(...cssProps)}
       }
     `;
   }
 
-  function below(
-    userSize: Size,
-    antiOverlap: AntiOverlap = 0
-  ): StyledCustomFunction {
+  function below(size: Size, antiOverlap: AntiOverlap = 0): StyledFunction {
     return (...cssProps) => css`
-      @media ${breakpoints('below', userSize, antiOverlap)} {
+      @media ${breakpoints('below', size, antiOverlap)} {
         ${css(...cssProps)}
       }
     `;
   }
 
-  function between(userSizes: Sizes): StyledCustomFunction {
+  function between(sizes: Sizes): StyledFunction {
     return (...cssProps) => css`
-      @media ${breakpoints('between', userSizes)} {
+      @media ${breakpoints('between', sizes)} {
         ${css(...cssProps)}
       }
     `;
