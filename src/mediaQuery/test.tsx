@@ -37,11 +37,11 @@ describe('above', () => {
   });
 
   it('should throw an error if size is passed with a unit', () => {
-    expect(() => above('768px', 2)).toThrow();
+    expect(() => above('768px', 2)``).toThrow();
   });
 
   it('should throw an error if antiOverlap is passed with a unit', () => {
-    expect(() => above(768, '2px')).toThrow();
+    expect(() => above(768, '2px')``).toThrow();
   });
 
   it(`should apply the passed style only if the component is greater than what
@@ -126,11 +126,11 @@ describe('below', () => {
   });
 
   it('should throw an error if size is passed with a unit', () => {
-    expect(() => below('768rem', 2)).toThrow();
+    expect(() => below('768rem', 2)``).toThrow();
   });
 
   it('should throw an error if antiOverlap is passed with a unit', () => {
-    expect(() => below(768, '2rem')).toThrow();
+    expect(() => below(768, '2rem')``).toThrow();
   });
 
   it(`should apply the passed style only if the component is greater than what
@@ -213,8 +213,8 @@ describe('between', () => {
   });
 
   it('should throw an error if a size is passed with a unit', () => {
-    expect(() => between(['768px', 2])).toThrow();
-    expect(() => between([768, '2px'])).toThrow();
+    expect(() => between(['768px', 2])``).toThrow();
+    expect(() => between([768, '2px'])``).toThrow();
   });
 
   it(`should apply the passed style only if the component is between than
