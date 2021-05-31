@@ -48,6 +48,10 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
 
   const double = {
     normalizeSize(sizes: Sizes): [number, number] {
+      if (!Array.isArray(sizes)) {
+        throw new Error('Parameter "sizes" must be an array');
+      }
+
       const [sizeOne, sizeTwo] = sizes as Size[];
 
       return [single.normalizeSize(sizeOne), single.normalizeSize(sizeTwo)];

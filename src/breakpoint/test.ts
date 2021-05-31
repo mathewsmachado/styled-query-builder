@@ -42,6 +42,11 @@ describe('breakpoint', () => {
     expect(() => breakpoints('between', ['1024px', '576'], '1')).toThrow();
   });
 
+  it(`should throw an error if user choose "between" option and don't pass
+  an array`, () => {
+    expect(() => breakpoints('between', '1024')).toThrow();
+  });
+
   it('should throw an error if a size is passed with a unit', () => {
     expect(() => breakpoints('below', '576px')).toThrow();
     expect(() => breakpoints('between', ['1024px', '576'])).toThrow();
