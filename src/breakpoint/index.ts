@@ -5,6 +5,11 @@ type Breakpoints = { [Key: string]: number };
 
 type SizeUnit = 'px' | 'rem';
 
+type HighOrderFunction<ReturnType> = (
+  breakpoints: Breakpoints,
+  sizeUnit: SizeUnit
+) => ReturnType;
+
 type MediaQueryType = 'above' | 'below' | 'between';
 
 type Size = keyof Breakpoints | string | number;
@@ -19,20 +24,20 @@ type Breakpoint = (
   antiOverlap?: AntiOverlap
 ) => string;
 
-function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
+const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
   const single = {
-    normalizeSize(size: Size): number {
+    normalizeSize: (size: Size): number => {
       if (hasLettersAndNumbers(size)) {
         throw new InvalidParamError('size', 'numbers');
       }
 
       return Number(breakpoints[size] || size);
     },
-    breakpoint(
+    breakpoint: (
       mediaQueryType: MediaQueryType,
       size: number,
       antiOverlap = 0
-    ): string {
+    ): string => {
       const mediaQueryTypeMapper = {
         below: 'max',
         above: 'min',
@@ -50,7 +55,7 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
   };
 
   const double = {
-    normalizeSize(sizes: Sizes): [number, number] {
+    normalizeSize: (sizes: Sizes): [number, number] => {
       if (!Array.isArray(sizes)) {
         throw new Error('Parameter "sizes" must be an array');
       }
@@ -59,18 +64,17 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
 
       return [single.normalizeSize(sizeOne), single.normalizeSize(sizeTwo)];
     },
-    breakpoint(sizeOne: number, sizeTwo: number): string {
-      return `${single.breakpoint('above', sizeOne)} and ${single.breakpoint(
+    breakpoint: (sizeOne: number, sizeTwo: number): string =>
+      `${single.breakpoint('above', sizeOne)} and ${single.breakpoint(
         'below',
         sizeTwo
-      )}`;
-    },
+      )}`,
   };
 
-  function normalizeAntiOverlap(
+  const normalizeAntiOverlap = (
     mediaQueryType: MediaQueryType,
     antiOverlap: AntiOverlap = 0
-  ): number {
+  ): number => {
     if (hasLettersAndNumbers(antiOverlap as number)) {
       throw new InvalidParamError('antiOverlap', 'numbers');
     }
@@ -82,13 +86,13 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
     }
 
     return Number(antiOverlap);
-  }
+  };
 
-  function breakpointFunction(
-    mediaQueryType: MediaQueryType,
-    sizes: Sizes,
-    antiOverlap: AntiOverlap = 0
-  ): string {
+  const breakpointFunction: Breakpoint = (
+    mediaQueryType,
+    sizes,
+    antiOverlap = 0
+  ) => {
     const normalizedAntiOverlap = normalizeAntiOverlap(
       mediaQueryType,
       antiOverlap
@@ -107,9 +111,9 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
     const [sizeOne, sizeTwo] = double.normalizeSize(sizes);
 
     return double.breakpoint(sizeOne, sizeTwo);
-  }
+  };
 
   return breakpointFunction;
-}
+};
 
-export { AntiOverlap, breakpoint, Breakpoints, Size, Sizes, SizeUnit };
+export { AntiOverlap, breakpoint, HighOrderFunction, Size, Sizes };
