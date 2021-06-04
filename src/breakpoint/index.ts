@@ -101,4 +101,4 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
   };
 };
 
-export { AntiOverlap, breakpoint, HighOrderFunction, Size, Sizes };
+export { AntiOverlap, breakpoint, Breakpoint, HighOrderFunction, Size, Sizes };

@@ -61,4 +61,4 @@ const mediaQuery: HighOrderFunction<MediaQuery> = (
   return { above, below, between };
 };
 
-export { mediaQuery, MediaQuery };
+export { mediaQuery, MediaQuery, SingleMediaQuery, DoubleMediaQuery };
