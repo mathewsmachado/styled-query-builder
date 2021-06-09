@@ -7,6 +7,7 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup -c",
+    "postbuild": "mv dist/src/types.d.ts dist/types.d.ts && rm -rf dist/**/ dist/index.d.ts",
     "typecheck": "tsc",
     "typo": "cspell --no-progress --no-must-find-files",
     "lint": "eslint src --fix --ignore-path .gitignore",

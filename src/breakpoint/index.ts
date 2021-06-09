@@ -1,27 +1,12 @@
 import { hasLettersAndNumbers } from 'helpers';
-
-type Breakpoints = { [Key: string]: number };
-
-type SizeUnit = 'px' | 'rem';
-
-type HighOrderFunction<ReturnType> = (
-  breakpoints: Breakpoints,
-  sizeUnit: SizeUnit
-) => ReturnType;
-
-type MediaQueryType = 'above' | 'below' | 'between';
-
-type Size = keyof Breakpoints | string | number;
-
-type Sizes = [Size, Size] | Size;
-
-type AntiOverlap = Omit<Size, keyof Breakpoints>;
-
-type Breakpoint = (
-  mediaQueryType: MediaQueryType,
-  sizes: Sizes,
-  antiOverlap?: AntiOverlap
-) => string;
+import {
+  AntiOverlap,
+  Breakpoint,
+  HighOrderFunction,
+  MediaQueryType,
+  Size,
+  Sizes,
+} from 'types';
 
 const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
   const single = {
@@ -100,4 +85,4 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
   };
 };
 
-export { AntiOverlap, breakpoint, Breakpoint, HighOrderFunction, Size, Sizes };
+export { breakpoint };
