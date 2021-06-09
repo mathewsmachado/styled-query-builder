@@ -32,7 +32,7 @@ const mediaQuery: HighOrderFunction<MediaQuery> = (
   const breakpoints = breakpoint(userBreakpoints, sizeUnit);
 
   const above: SingleMediaQuery =
-    (size, antiOverlap = 0) =>
+    (size, antiOverlap) =>
     (...cssProps) =>
       css`
         @media ${breakpoints('above', size, antiOverlap)} {
@@ -41,7 +41,7 @@ const mediaQuery: HighOrderFunction<MediaQuery> = (
       `;
 
   const below: SingleMediaQuery =
-    (size, antiOverlap = 0) =>
+    (size, antiOverlap) =>
     (...cssProps) =>
       css`
         @media ${breakpoints('below', size, antiOverlap)} {

@@ -2,13 +2,6 @@
   "language": "en",
   "minWordLength": 2,
   "files": ["**/*"],
-  "ignorePaths": [
-    "dist",
-    "coverage",
-    ".*",
-    "*.lock",
-    "./*.json",
-    "*.config.*"
-  ],
+  "ignorePaths": ["dist", "coverage", ".*", "*.lock", "./*.json", "*.config.*"],
   "words": ["nocheck", "xlarge"]
 }

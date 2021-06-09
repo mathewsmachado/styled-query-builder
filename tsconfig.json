@@ -13,7 +13,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist" // Cannot write file '{{ file.name }}' because it would overwrite input file.
+    "outDir": "dist" // Cannot write file '{{ file.name }}' because it would
+    // overwrite input file.
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "exclude": ["node_modules", "dist", "coverage"]
