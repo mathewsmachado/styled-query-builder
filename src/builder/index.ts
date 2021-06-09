@@ -8,11 +8,9 @@ type Builder = {
   between: DoubleMediaQuery;
 };
 
-const builder: HighOrderFunction<Builder> = (userBreakpoints, sizeUnit) => {
-  const breakpoints = breakpoint(userBreakpoints, sizeUnit);
-  const { above, below, between } = mediaQuery(userBreakpoints, sizeUnit);
-
-  return { above, below, between, breakpoints };
-};
+const builder: HighOrderFunction<Builder> = (userBreakpoints, sizeUnit) => ({
+  ...mediaQuery(userBreakpoints, sizeUnit),
+  breakpoints: breakpoint(userBreakpoints, sizeUnit),
+});
 
 export { builder };
