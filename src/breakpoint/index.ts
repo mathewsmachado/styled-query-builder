@@ -1,4 +1,3 @@
-import { InvalidParamError } from 'errors';
 import { hasLettersAndNumbers } from 'helpers';
 
 type Breakpoints = { [Key: string]: number };
@@ -28,7 +27,7 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
   const single = {
     size: (size: Size): number => {
       if (hasLettersAndNumbers(size)) {
-        throw new InvalidParamError('size', 'numbers');
+        throw new Error('Parameter "size" does not accept a unit size');
       }
 
       return Number(breakpoints[size] || size);
@@ -36,7 +35,7 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
 
     antiOverlap: (antiOverlap: AntiOverlap) => {
       if (hasLettersAndNumbers(antiOverlap as number)) {
-        throw new InvalidParamError('antiOverlap', 'numbers');
+        throw new Error('Parameter "antiOverlap" does not accept a unit size');
       }
 
       return Number(antiOverlap);

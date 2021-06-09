@@ -1,9 +1,7 @@
 import { breakpoint } from '.';
 
-const breakpointsMock = { sm: 576, md: 768, lg: 1024 };
-
 describe('breakpoint', () => {
-  const breakpoints = breakpoint(breakpointsMock, 'px');
+  const breakpoints = breakpoint({ sm: 576, md: 768, lg: 1024 }, 'px');
 
   it(`should accept a breakpoint object and return a function on the first
   invocation`, () => {
