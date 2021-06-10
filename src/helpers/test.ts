@@ -12,4 +12,9 @@ describe('hasLettersAndNumbers', () => {
     expect(hasLettersAndNumbers('768px')).toBe(true);
     expect(hasLettersAndNumbers('!768')).toBe(true);
   });
+
+  it('should accept strings with dots, since media queries allows it', () => {
+    expect(hasLettersAndNumbers('48.75')).toBe(false);
+    expect(hasLettersAndNumbers('0.025')).toBe(false);
+  });
 });
