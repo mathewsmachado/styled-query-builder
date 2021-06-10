@@ -1,9 +1,14 @@
 {
   "name": "styled-query-builder",
   "version": "1.0.0",
-  "description": "A tool to help you build responsive interfaces with Styled Components",
+  "description": "A semantic tool to help you build responsive interfaces with Styled Components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MathewsMachado/styled-query-builder"
+  },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "types": "dist/types.d.ts",
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup -c",
