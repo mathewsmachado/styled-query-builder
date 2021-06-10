@@ -2,6 +2,13 @@
   "language": "en",
   "minWordLength": 2,
   "files": ["**/*"],
-  "ignorePaths": ["dist", "coverage", ".*", "*.lock", "./*.json", "*.config.*"],
-  "words": ["nocheck", "xlarge"]
+  "ignorePaths": [
+    "dist",
+    "coverage",
+    "**/*.lock",
+    "**/*.json",
+    "*.config.*",
+    "*/**/*.svg"
+  ],
+  "words": ["img", "nocheck", "vh", "vw", "xlarge", "xlg"]
 }

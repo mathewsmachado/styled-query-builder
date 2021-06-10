@@ -1,4 +1,7 @@
 {
   "*": ["yarn typo"],
-  "*.{js,jsx,ts,tsx}": ["yarn lint", "yarn test --findRelatedTests"]
+  "*.{js,jsx,ts,tsx}": [
+    "yarn lint --ignore-pattern docs",
+    "yarn test --findRelatedTests"
+  ]
 }
