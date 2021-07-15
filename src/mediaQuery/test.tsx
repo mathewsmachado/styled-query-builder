@@ -96,7 +96,7 @@ describe('above', () => {
 
     const Component = styled.h1`
       color: #000000;
-      // fix this typescript issue
+      // typescript issue
       ${above('lg')`${colorKeyOne}: ${colorValueOne};`}
       ${above(768, 1)`${`${colorKeyTwo} ${colorValueTwo}`};`}
     `;
@@ -185,7 +185,7 @@ describe('below', () => {
 
     const Component = styled.h1`
       color: #000000;
-      // fix this typescript issue
+      // typescript issue
       ${below('lg')`${colorKeyOne}: ${colorValueOne};`}
       ${below(768, 1)`${`${colorKeyTwo} ${colorValueTwo}`};`}
     `;
@@ -238,7 +238,7 @@ describe('between', () => {
 
     const Component = styled.h1`
       color: #000000;
-      // fix this typescript issue
+      // typescript issue
       ${between([768, 1])`${`${colorKey} ${colorValue}`};`}
     `;
 

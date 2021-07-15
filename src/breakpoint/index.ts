@@ -34,7 +34,7 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
       const mediaQueryTypeMapper = {
         below: 'max',
         above: 'min',
-        between: null, // solve this typescript issue
+        between: null, // typescript issue
       };
 
       const sizeWithOverlap =
