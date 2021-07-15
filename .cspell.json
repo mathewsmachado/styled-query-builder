@@ -10,5 +10,15 @@
     "*.config.*",
     "*/**/*.svg"
   ],
-  "words": ["img", "nocheck", "vh", "vw", "xlarge", "xlg"]
+  "words": [
+    "img",
+    "nocheck",
+    "vh",
+    "vw",
+    "xlarge",
+    "xlg",
+    "Morajabi's",
+    "Willian",
+    "Machado"
+  ]
 }
