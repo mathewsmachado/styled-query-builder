@@ -6,6 +6,7 @@ const defaultBreakpoints = {
   large: 1024,
   xlarge: 1280,
 };
+
 const defaultSizeUnit = 'px';
 
 const { above, below, between, breakpoints } = builder(

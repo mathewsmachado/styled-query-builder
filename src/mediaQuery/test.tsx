@@ -9,8 +9,8 @@ import { mediaQuery } from '.';
 const breakpoints = { sm: 576, md: 768, lg: 1024 };
 
 describe('mediaQuery', () => {
-  it(`should accept a breakpoints object and optionally a size unit and return
-  an object with 3 other functions on first invocation`, () => {
+  it(`should return an object with 3 other functions on first
+  invocation`, () => {
     expect(mediaQuery(breakpoints)).toStrictEqual({
       above: expect.any(Function),
       below: expect.any(Function),
@@ -28,7 +28,7 @@ describe('mediaQuery', () => {
 describe('above', () => {
   const { above } = mediaQuery(breakpoints, 'px');
 
-  it('should receive a size and an antiOverlap and return a function', () => {
+  it('should return a function', () => {
     expect(above('md')).toStrictEqual(expect.any(Function));
     expect(above('768')).toStrictEqual(expect.any(Function));
     expect(above(768)).toStrictEqual(expect.any(Function));
@@ -36,11 +36,11 @@ describe('above', () => {
     expect(above('md', '2')).toStrictEqual(expect.any(Function));
   });
 
-  it('should throw an error if size is passed with a unit', () => {
+  it('should throw an error if size is passed with a size unit', () => {
     expect(() => above('768px', 2)``).toThrow();
   });
 
-  it('should throw an error if antiOverlap is passed with a unit', () => {
+  it('should throw an error if antiOverlap is passed with a size unit', () => {
     expect(() => above(768, '2px')``).toThrow();
   });
 
@@ -117,7 +117,7 @@ describe('above', () => {
 describe('below', () => {
   const { below } = mediaQuery(breakpoints, 'rem');
 
-  it('should receive a size and an antiOverlap and return a function', () => {
+  it('should return a function', () => {
     expect(below('md')).toStrictEqual(expect.any(Function));
     expect(below('768')).toStrictEqual(expect.any(Function));
     expect(below(768)).toStrictEqual(expect.any(Function));
@@ -125,11 +125,11 @@ describe('below', () => {
     expect(below('md', '2')).toStrictEqual(expect.any(Function));
   });
 
-  it('should throw an error if size is passed with a unit', () => {
+  it('should throw an error if size is passed with a size unit', () => {
     expect(() => below('768rem', 2)``).toThrow();
   });
 
-  it('should throw an error if antiOverlap is passed with a unit', () => {
+  it('should throw an error if antiOverlap is passed with a size unit', () => {
     expect(() => below(768, '2rem')``).toThrow();
   });
 
@@ -206,13 +206,13 @@ describe('below', () => {
 describe('between', () => {
   const { between } = mediaQuery(breakpoints, 'px');
 
-  it('should receive sizes into an array and return a function', () => {
+  it('should return a function', () => {
     expect(between(['lg', 'sm'])).toStrictEqual(expect.any(Function));
     expect(between(['1024', 576])).toStrictEqual(expect.any(Function));
     expect(between([1024, 'sm'])).toStrictEqual(expect.any(Function));
   });
 
-  it('should throw an error if a size is passed with a unit', () => {
+  it('should throw an error if a size is passed with a size unit', () => {
     expect(() => between(['768px', 2])``).toThrow();
     expect(() => between([768, '2px'])``).toThrow();
   });

@@ -9,7 +9,7 @@ import {
 } from 'types';
 
 const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
-  const single = {
+  const simple = {
     size: (size: Size): number => {
       if (hasLettersAndNumbers(size)) {
         throw new Error('Parameter "size" does not accept a unit size');
@@ -47,13 +47,13 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
     },
   };
 
-  const double = {
+  const composed = {
     size: (sizes: Sizes): [number, number] => {
       if (!Array.isArray(sizes)) {
         throw new Error('Parameter "sizes" must be an array');
       }
 
-      return [single.size(sizes[0]), single.size(sizes[1])];
+      return [simple.size(sizes[0]), simple.size(sizes[1])];
     },
 
     antiOverlap: (antiOverlap: AntiOverlap) => {
@@ -65,7 +65,7 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
     },
 
     stringGenerator: (sizeOne: number, sizeTwo: number): string =>
-      `${single.stringGenerator('above', sizeOne)} and ${single.stringGenerator(
+      `${simple.stringGenerator('above', sizeOne)} and ${simple.stringGenerator(
         'below',
         sizeTwo
       )}`,
@@ -73,14 +73,14 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
 
   return (mediaQueryType, sizes, antiOverlap = 0) => {
     if (mediaQueryType === 'between') {
-      double.antiOverlap(antiOverlap);
-      return double.stringGenerator(...double.size(sizes));
+      composed.antiOverlap(antiOverlap);
+      return composed.stringGenerator(...composed.size(sizes));
     }
 
-    return single.stringGenerator(
+    return simple.stringGenerator(
       mediaQueryType,
-      single.size(sizes as Size),
-      single.antiOverlap(antiOverlap)
+      simple.size(sizes as Size),
+      simple.antiOverlap(antiOverlap)
     );
   };
 };
