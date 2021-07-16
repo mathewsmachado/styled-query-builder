@@ -1,6 +1,8 @@
-# styled-query-builder 💅
+<div align="center">
+  <img alt="logo" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/logo.png" height="250px" />
+</div>
 
-![Logo](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/logo-background.png)
+<h2 align="center">styled-query-builder 🔨</h2>
 
 Sometimes, working with media queries isn't easy. It's hard to remember what "min-width" or "max-width" stand for, if the styles will be applied if the screen is smaller or bigger than the specified. This is what [styled-query-builder](https://github.com/MathewsMachado/styled-query-builder) aims to solve. With this tool, you can write media queries in a semantic way.
 
@@ -12,12 +14,12 @@ It is easy to use, well-documented and tested!
 
 ## Features
 
-- Pre-configured media queries
-- Custom media queries
-- Semantic API
-- Flexibility to work with what you like most, mobile-first or desktop-first
-- A helper that gives you all the available media queries
-- Media queries that do not overlap with each other thanks to the "antiOverlap" property
+- [Pre-configured media queries](https://github.com/MathewsMachado/styled-query-builder/#usage)
+- [Custom media queries](https://github.com/MathewsMachado/styled-query-builder/#builderuserbreakpoints-sizeunit)
+- [Semantic API](https://github.com/MathewsMachado/styled-query-builder/#api)
+- [Flexibility to work with what you like most, mobile-first or desktop-first](https://github.com/MathewsMachado/styled-query-builder/#api)
+- [A helper that gives you all the available media queries](https://github.com/MathewsMachado/styled-query-builder/#breakpointsmediaquerytype-sizes-antioverlap)
+- [Media queries that do not overlap with each other thanks to the "antiOverlap" property](https://github.com/MathewsMachado/styled-query-builder/#antioverlap)
 
 ## Getting Started
 
@@ -43,52 +45,52 @@ yarn add styled-query-builder
 
 This library has, as default, the following [breakpoints](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/index.ts#L3):
 
-![breakpoints](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/usage-breakpoints.png)
+<img alt="breakpoints" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/usage-breakpoints.png" height="400px" />
 
 and "px" as [size unit](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/index.ts#L9).
 
 ### Disclaimer
 
-1. If you want to use "rem" as size unit, you will have to use the ["builder()"](builderMethodRM) method.
+1. If you want to use "rem" as size unit, you will have to use the ["builder()"](https://github.com/MathewsMachado/styled-query-builder/#builderuserbreakpoints-sizeunit) method.
 2. If you want to call the methods as in:
 
-![below function](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/disclaimer-single.png)
+<img alt="below function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/disclaimer-single.png" height="400px" />
 
-but want different breakpoints, you will also have to use the ["builder()"](builderMethodRM) method. Otherwise, if you want to use different breakpoints, but don't care about calling the methods as above, you can call them as in:
+but want different breakpoints, you will also have to use the ["builder()"](https://github.com/MathewsMachado/styled-query-builder/#builderuserbreakpoints-sizeunit) method. Otherwise, if you want to use different breakpoints, but don't care about calling the methods as above, you can call them as in:
 
-![below function](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/disclaimer-double.png)
+<img alt="below function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/disclaimer-double.png" height="400px" />
 
 ### API
 
-#### **[above](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts#L17)([size](sizeParameterRM), [antiOverlap?](antiOverlapParam))**
+#### **[above](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts#L17)([size](https://github.com/MathewsMachado/styled-query-builder/#size), [antiOverlap?](https://github.com/MathewsMachado/styled-query-builder/#antioverlap))**
 
 This function applies the style if the screen is bigger than the informed size. It is equivalent to "`@media (min-width: ...)`".
 
-![above function](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-above.png)
+<img alt="above function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-above.png" height="400px" />
 
-#### **[below](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts#L26)([size](sizeParameterRM), [antiOverlap?](antiOverlapParamRM))**
+#### **[below](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts#L26)([size](https://github.com/MathewsMachado/styled-query-builder/#size), [antiOverlap?](https://github.com/MathewsMachado/styled-query-builder/#antioverlap))**
 
 This function applies the style if the screen is smaller than the informed size. It is equivalent to "`@media (max-width: ...)`".
 
-![below function](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-below.png)
+<img alt="below function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-below.png" height="400px" />
 
-#### **[between](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts#L35)([sizes](sizesParamRM))**
+#### **[between](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts#L35)([sizes](https://github.com/MathewsMachado/styled-query-builder/#sizes))**
 
 This function applies the style if the screen size is between the informed sizes. It is equivalent to "`@media (min-width: ...) and (max-width: ...)`".
 
-![between function](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-between.png)
+<img alt="between function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-between.png" height="400px" />
 
-#### **[breakpoints](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/breakpoint/index.ts#L74)([mediaQueryType](mediaQueryTypeParamRM), [sizes](sizesParamRM), [antiOverlap?](antiOverlapParamRM))**
+#### **[breakpoints](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/breakpoint/index.ts#L74)([mediaQueryType](https://github.com/MathewsMachado/styled-query-builder/#mediaquerytype), [sizes](https://github.com/MathewsMachado/styled-query-builder/#sizes), [antiOverlap?](https://github.com/MathewsMachado/styled-query-builder/#antioverlap))**
 
 This function returns the media query that the user wants. It is perfect to mock a size screen in tests that uses [jest-styled-components](https://github.com/styled-components/jest-styled-components), and a lot more.
 
-![breakpoints function](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-breakpoints.png)
+<img alt="breakpoints function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-breakpoints.png" height="400px" />
 
-#### **[builder](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/builder/index.ts)([userBreakpoints](breakpointsParamRM), [sizeUnit](sizeUnitParamRM))**
+#### **[builder](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/builder/index.ts)([userBreakpoints](https://github.com/MathewsMachado/styled-query-builder/#userbreakpoints), [sizeUnit](https://github.com/MathewsMachado/styled-query-builder/#sizeunit))**
 
-This function is for who wants custom breakpoints or use "rem" as size unit. You load it with the breakpoints and the size unit, and it returns all the above methods to you: "[above()](aboveRM)", "[below()](belowRM)", "[between()](betweenRM)" and "[breakpoints()](breakpointsRM)".
+This function is for who wants custom breakpoints or use "rem" as size unit. You load it with the breakpoints and the size unit, and it returns all the above methods to you: "[above()](https://github.com/MathewsMachado/styled-query-builder/#abovesize-antioverlap)", "[below()](https://github.com/MathewsMachado/styled-query-builder/#belowsize-antioverlap)", "[between()](https://github.com/MathewsMachado/styled-query-builder/#betweensizes)" and "[breakpoints()](https://github.com/MathewsMachado/styled-query-builder/#breakpointsmediaquerytype-sizes-antioverlap)".
 
-![builder function](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-builder.png)
+<img alt="builder function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-builder.png" height="400px" />
 
 ### Functions Parameters
 
@@ -96,11 +98,11 @@ This function is for who wants custom breakpoints or use "rem" as size unit. You
 
 If, somehow, you use two media queries that "bump" each other, like:
 
-![below function](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/param-anti-overlap-1.png)
+<img alt="below function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/param-anti-overlap-1.png" height="400px" />
 
-You can use this property to solve this issue. If you are calling the "[below()](belowFunctionRM)" method, it will reduce from the media query the value that you pass. If you are calling the "[above()](aboveFunctionRM)" method, it will add to the media query the value that you pass.
+You can use this property to solve this issue. If you are calling the "[below()](https://github.com/MathewsMachado/styled-query-builder/#belowsize-antioverlap)" method, it will reduce from the media query the value that you pass. If you are calling the "[above()](https://github.com/MathewsMachado/styled-query-builder/#abovesize-antioverlap)" method, it will add to the media query the value that you pass.
 
-![below function](https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/param-anti-overlap-2.png)
+<img alt="below function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/param-anti-overlap-2.png" height="400px" />
 
 #### **[mediaQueryType](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L12)**
 
@@ -108,11 +110,11 @@ It can be the following values: "above", "below" or "between".
 
 #### **[size](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L14)**
 
-It can be one of the keys of the [breakpoints](breakpointsRM), or a value indicating a size.
+It can be one of the keys of the breakpoints (the default ones or the ones provided by the user), or a value indicating a size.
 
 #### **[sizes](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L16)**
 
-It can be a [size](sizeParamRM) or a [size array](sizeParamRM) with two values.
+It can be a [size](https://github.com/MathewsMachado/styled-query-builder/#size) or a [size array](https://github.com/MathewsMachado/styled-query-builder/#size) with two values.
 
 #### **[sizeUnit](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L5)**
 
@@ -120,7 +122,7 @@ It can be the following values: "px" or "rem".
 
 #### **[userBreakpoints](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L3)**
 
-It can be an object like the [default breakpoints](defaultBreakpointsRM), with how many breakpoints the user wants.
+It can be an object like the [default breakpoints](https://github.com/MathewsMachado/styled-query-builder/#usage), with how many breakpoints the user wants.
 
 ## Examples
 
@@ -158,14 +160,14 @@ yarn
 
 - Typing: Look for general improvements
 - Typing: Fix the errors across the codebase, which are marked as "// typescript issue". The items 2, 3 and 4 below are related.
-  1. on [mediaQueryTypeMapper](##)
-  2. on [mediaQuery/test.tsx/](##)
-  3. on [mediaQuery/test.tsx/](##)
-  4. on [mediaQuery/test.tsx/](##)
+  1. on [mediaQueryTypeMapper](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/breakpoint/index.ts#L37)
+  2. on [mediaQuery tests](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/test.tsx#L99)
+  3. on [mediaQuery tests](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/test.tsx#L188)
+  4. on [mediaQuery tests](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/test.tsx#L241)
 
 ## Contribution
 
-This project is accepting contributions, the aim is to clean the [to-do](todoRM) list. Feel free to open an issue or submit a pull request. In the case of a pull request, explain well what you are doing and create tests for it.
+This project is accepting contributions, the aim is to clean the [to-do](https://github.com/MathewsMachado/styled-query-builder/#to-do) list. Feel free to open an issue or submit a pull request. In the case of a pull request, explain well what you are doing and create tests for it.
 
 ## Acknowledgement
 
@@ -175,4 +177,4 @@ I want to thanks [Willian Machado](https://www.linkedin.com/in/willian-machado-a
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](##) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/MathewsMachado/styled-query-builder/blob/main/LICENSE) file for details.
