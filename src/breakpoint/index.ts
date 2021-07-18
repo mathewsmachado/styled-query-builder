@@ -16,7 +16,16 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
         throw new Error('Parameter "size" does not accept a unit size');
       }
 
-      return Number(breakpoints[size] || size);
+      /* eslint-disable no-restricted-globals */
+      if (!isNaN(size as number)) {
+        return Number(size);
+      }
+
+      if (!breakpoints[size]) {
+        throw new Error(`"${size}" was not found on breakpoints object`);
+      }
+
+      return Number(breakpoints[size]);
     },
 
     antiOverlap(antiOverlap: AntiOverlap) {

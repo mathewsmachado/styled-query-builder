@@ -30,18 +30,6 @@ describe('breakpoint', () => {
     expect(breakpoints('above', 576, '1')).toBe('(min-width: 577px)');
   });
 
-  it(`should throw an error if media query type be 'between' and an antiOverlap
-  property be provided`, () => {
-    expect(() => breakpoints('between', ['1024px', '576'], 1)).toThrow();
-    expect(() => breakpoints('between', ['1024px', '576'], '1')).toThrow();
-  });
-
-  it(`should throw an error if media query type be 'between' and 'sizes'
-  property don't be an array`, () => {
-    expect(() => breakpoints('between', '1024')).toThrow();
-    expect(() => breakpoints('between', 1024)).toThrow();
-  });
-
   it(`should throw an error if the 'sizes' property is passed with a
   unit`, () => {
     expect(() => breakpoints('below', '576px')).toThrow();
@@ -52,5 +40,22 @@ describe('breakpoint', () => {
   it(`should throw an error if the 'antiOverlap' property is passed with a
   unit`, () => {
     expect(() => breakpoints('below', '576', '1px')).toThrow();
+  });
+
+  it(`should throw an error if the 'size' property be a word but the
+  'breakpoints' object do not contains it`, () => {
+    expect(() => breakpoints('below', 'noExistentBreakpoint')).toThrow();
+  });
+
+  it(`should throw an error if media query type be 'between' and an antiOverlap
+  property be provided`, () => {
+    expect(() => breakpoints('between', ['1024px', '576'], 1)).toThrow();
+    expect(() => breakpoints('between', ['1024px', '576'], '1')).toThrow();
+  });
+
+  it(`should throw an error if media query type be 'between' and 'sizes'
+  property don't be an array`, () => {
+    expect(() => breakpoints('between', '1024')).toThrow();
+    expect(() => breakpoints('between', 1024)).toThrow();
   });
 });
