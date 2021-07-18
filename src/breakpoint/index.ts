@@ -2,15 +2,16 @@ import { hasLettersAndNumbers } from 'helpers';
 import {
   AntiOverlap,
   Breakpoint,
-  HighOrderFunction,
+  Breakpoints,
   MediaQueryType,
   Size,
   Sizes,
+  SizeUnit,
 } from 'types';
 
-const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
+function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
   const simple = {
-    size: (size: Size): number => {
+    size(size: Size): number {
       if (hasLettersAndNumbers(size)) {
         throw new Error('Parameter "size" does not accept a unit size');
       }
@@ -18,7 +19,7 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
       return Number(breakpoints[size] || size);
     },
 
-    antiOverlap: (antiOverlap: AntiOverlap) => {
+    antiOverlap(antiOverlap: AntiOverlap) {
       if (hasLettersAndNumbers(antiOverlap as number)) {
         throw new Error('Parameter "antiOverlap" does not accept a unit size');
       }
@@ -26,11 +27,11 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
       return Number(antiOverlap);
     },
 
-    stringGenerator: (
+    stringGenerator(
       mediaQueryType: MediaQueryType,
       size: number,
       antiOverlap = 0
-    ): string => {
+    ): string {
       const mediaQueryTypeMapper = {
         below: 'max',
         above: 'min',
@@ -48,7 +49,7 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
   };
 
   const composed = {
-    size: (sizes: Sizes): [number, number] => {
+    size(sizes: Sizes): [number, number] {
       if (!Array.isArray(sizes)) {
         throw new Error('Parameter "sizes" must be an array');
       }
@@ -56,7 +57,7 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
       return [simple.size(sizes[0]), simple.size(sizes[1])];
     },
 
-    antiOverlap: (antiOverlap: AntiOverlap) => {
+    antiOverlap(antiOverlap: AntiOverlap) {
       if (antiOverlap) {
         throw new Error(
           '"between" media query type don\'t support "anti-overlap" option'
@@ -64,14 +65,15 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
       }
     },
 
-    stringGenerator: (sizeOne: number, sizeTwo: number): string =>
-      `${simple.stringGenerator('above', sizeOne)} and ${simple.stringGenerator(
-        'below',
-        sizeTwo
-      )}`,
+    stringGenerator(sizeOne: number, sizeTwo: number): string {
+      return `${simple.stringGenerator(
+        'above',
+        sizeOne
+      )} and ${simple.stringGenerator('below', sizeTwo)}`;
+    },
   };
 
-  return (mediaQueryType, sizes, antiOverlap = 0) => {
+  return function breakpointFunction(mediaQueryType, sizes, antiOverlap = 0) {
     if (mediaQueryType === 'between') {
       composed.antiOverlap(antiOverlap);
       return composed.stringGenerator(...composed.size(sizes));
@@ -83,6 +85,6 @@ const breakpoint: HighOrderFunction<Breakpoint> = (breakpoints, sizeUnit) => {
       simple.antiOverlap(antiOverlap)
     );
   };
-};
+}
 
 export { breakpoint };

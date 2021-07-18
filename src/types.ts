@@ -1,15 +1,10 @@
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components';
 
-type Breakpoints = { [Key: string]: number };
-
 type SizeUnit = 'px' | 'rem';
 
-type HighOrderFunction<ReturnType> = (
-  breakpoints: Breakpoints,
-  sizeUnit: SizeUnit
-) => ReturnType;
-
 type MediaQueryType = 'above' | 'below' | 'between';
+
+type Breakpoints = { [Key: string]: number };
 
 type Size = keyof Breakpoints | string | number;
 
@@ -27,36 +22,25 @@ type CssProps = CSSObject | TemplateStringsArray;
 
 type StyledFunction = (cssProps: CssProps) => FlattenSimpleInterpolation;
 
-type SingleMediaQuery = (
-  size: Size,
-  antiOverlap?: AntiOverlap
-) => StyledFunction;
-
-type DoubleMediaQuery = (sizes: Sizes) => StyledFunction;
-
 type MediaQuery = {
-  above: SingleMediaQuery;
-  below: SingleMediaQuery;
-  between: DoubleMediaQuery;
+  above: (size: Size, antiOverlap?: AntiOverlap) => StyledFunction;
+  below: (size: Size, antiOverlap?: AntiOverlap) => StyledFunction;
+  between: (sizes: Sizes) => StyledFunction;
 };
 
 type Builder = {
   breakpoints: Breakpoint;
-  above: SingleMediaQuery;
-  below: SingleMediaQuery;
-  between: DoubleMediaQuery;
-};
+} & MediaQuery;
 
 export {
   AntiOverlap,
   Breakpoint,
+  Breakpoints,
   Builder,
-  DoubleMediaQuery,
-  HighOrderFunction,
   MediaQuery,
   MediaQueryType,
-  SingleMediaQuery,
   Size,
+  SizeUnit,
   Sizes,
   StyledFunction,
 };

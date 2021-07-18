@@ -2,46 +2,49 @@ import { css } from 'styled-components';
 
 import { breakpoint } from 'breakpoint';
 import {
-  DoubleMediaQuery,
-  HighOrderFunction,
+  AntiOverlap,
+  Breakpoints,
   MediaQuery,
-  SingleMediaQuery,
+  Size,
+  Sizes,
+  SizeUnit,
+  StyledFunction,
 } from 'types';
 
-const mediaQuery: HighOrderFunction<MediaQuery> = (
-  userBreakpoints,
-  sizeUnit = 'px'
-) => {
+function mediaQuery(
+  userBreakpoints: Breakpoints,
+  sizeUnit: SizeUnit = 'px'
+): MediaQuery {
   const breakpoints = breakpoint(userBreakpoints, sizeUnit);
 
-  const above: SingleMediaQuery =
-    (size, antiOverlap) =>
-    (...cssProps) =>
+  function above(size: Size, antiOverlap?: AntiOverlap): StyledFunction {
+    return (...cssProps) =>
       css`
         @media ${breakpoints('above', size, antiOverlap)} {
           ${css(...cssProps)}
         }
       `;
+  }
 
-  const below: SingleMediaQuery =
-    (size, antiOverlap) =>
-    (...cssProps) =>
+  function below(size: Size, antiOverlap?: AntiOverlap): StyledFunction {
+    return (...cssProps) =>
       css`
         @media ${breakpoints('below', size, antiOverlap)} {
           ${css(...cssProps)}
         }
       `;
+  }
 
-  const between: DoubleMediaQuery =
-    (sizes) =>
-    (...cssProps) =>
+  function between(sizes: Sizes): StyledFunction {
+    return (...cssProps) =>
       css`
         @media ${breakpoints('between', sizes)} {
           ${css(...cssProps)}
         }
       `;
+  }
 
   return { above, below, between };
-};
+}
 
 export { mediaQuery };
