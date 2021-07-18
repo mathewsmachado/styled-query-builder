@@ -16,6 +16,5 @@
     "outDir": "dist" // Cannot write file '{{ file.name }}' because it would
     // overwrite input file.
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
-  "exclude": ["node_modules", "dist", "coverage"]
+  "exclude": ["docs"]
 }
