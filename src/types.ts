@@ -26,17 +26,13 @@ type MediaQuery = {
   above: (size: Size, antiOverlap?: AntiOverlap) => StyledFunction;
   below: (size: Size, antiOverlap?: AntiOverlap) => StyledFunction;
   between: (sizes: Sizes) => StyledFunction;
-};
-
-type Builder = {
   breakpoints: Breakpoint;
-} & MediaQuery;
+};
 
 export {
   AntiOverlap,
   Breakpoint,
   Breakpoints,
-  Builder,
   MediaQuery,
   MediaQueryType,
   Size,

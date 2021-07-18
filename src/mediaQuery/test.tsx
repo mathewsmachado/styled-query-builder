@@ -9,18 +9,20 @@ import { mediaQuery } from '.';
 const breakpoints = { sm: 576, md: 768, lg: 1024 };
 
 describe('mediaQuery', () => {
-  it(`should return an object with 3 other functions on first
-  invocation`, () => {
-    expect(mediaQuery(breakpoints)).toStrictEqual({
+  it(`should return an object with four functions on first
+    invocation`, () => {
+    expect(mediaQuery(breakpoints, 'px')).toStrictEqual({
       above: expect.any(Function),
       below: expect.any(Function),
       between: expect.any(Function),
+      breakpoints: expect.any(Function),
     });
 
     expect(mediaQuery(breakpoints, 'rem')).toStrictEqual({
       above: expect.any(Function),
       below: expect.any(Function),
       between: expect.any(Function),
+      breakpoints: expect.any(Function),
     });
   });
 });

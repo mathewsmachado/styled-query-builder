@@ -44,7 +44,7 @@ function mediaQuery(
       `;
   }
 
-  return { above, below, between };
+  return { above, below, between, breakpoints };
 }
 
 export { mediaQuery };

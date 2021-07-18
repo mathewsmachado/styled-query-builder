@@ -1,4 +1,6 @@
-import { builder } from 'builder';
+import { mediaQuery } from 'mediaQuery';
+
+const builder = mediaQuery;
 
 const defaultBreakpoints = {
   small: 576,
