@@ -3,27 +3,17 @@ import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
 
-const tsconfigOverride = {
-  exclude: [
-    'node_modules',
-    'dist',
-    'coverage',
-    'src/**/test.*"',
-    'src/**/*.test.*"',
-    'jest.*',
-    '*.config.*',
-  ],
-};
-
 export default {
   input: 'src/index.ts',
   output: [
-    { file: pkg.module, format: 'esm', sourcemap: true },
-    { file: pkg.main, format: 'cjs', sourcemap: true },
+    { file: pkg.module, format: 'esm' },
+    { file: pkg.main, format: 'cjs' },
   ],
   external: [...Object.keys(pkg.peerDependencies)],
   plugins: [
-    typescript({ tsconfigOverride }),
+    typescript({
+      tsconfigOverride: { exclude: ['docs', 'jest.*', 'rollup.*'] },
+    }),
     terser({ format: { comments: false } }),
   ],
 };
