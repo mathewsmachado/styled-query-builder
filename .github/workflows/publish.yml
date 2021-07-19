@@ -1,0 +1,42 @@
+name: PUBLISH
+
+on: [push, pull_request]
+  branches: [ $default-branch ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+
+    - name: Install dependencies
+      run:  yarn
+
+    - name: Check typos
+      run:  yarn typo
+
+    - name: Lint
+      run:  yarn lint
+
+    - name: Typecheck
+      run:  yarn typecheck
+
+    - name: Test
+      run:  yarn test
+
+    - name: Build and publish
+      run:  npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
