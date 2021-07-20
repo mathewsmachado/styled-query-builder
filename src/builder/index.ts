@@ -4,17 +4,17 @@ import { breakpoint } from 'breakpoint';
 import {
   AntiOverlap,
   Breakpoints,
-  MediaQuery,
+  BuilderReturn,
   Size,
   Sizes,
   SizeUnit,
   StyledFunction,
 } from 'types';
 
-function mediaQuery(
+function builder(
   userBreakpoints: Breakpoints,
   sizeUnit: SizeUnit = 'px'
-): MediaQuery {
+): BuilderReturn {
   const breakpoints = breakpoint(userBreakpoints, sizeUnit);
 
   function above(size: Size, antiOverlap?: AntiOverlap): StyledFunction {
@@ -47,4 +47,4 @@ function mediaQuery(
   return { above, below, between, breakpoints };
 }
 
-export { mediaQuery };
+export { builder };

@@ -4,21 +4,20 @@ import React from 'react';
 import styled from 'styled-components';
 import { render, screen } from '@testing-library/react';
 
-import { mediaQuery } from '.';
+import { builder } from '.';
 
 const breakpoints = { sm: 576, md: 768, lg: 1024 };
 
-describe('mediaQuery', () => {
-  it(`should return an object with four functions on first
-    invocation`, () => {
-    expect(mediaQuery(breakpoints, 'px')).toStrictEqual({
+describe('builder', () => {
+  it('should return an object with four functions on first invocation', () => {
+    expect(builder(breakpoints, 'px')).toStrictEqual({
       above: expect.any(Function),
       below: expect.any(Function),
       between: expect.any(Function),
       breakpoints: expect.any(Function),
     });
 
-    expect(mediaQuery(breakpoints, 'rem')).toStrictEqual({
+    expect(builder(breakpoints, 'rem')).toStrictEqual({
       above: expect.any(Function),
       below: expect.any(Function),
       between: expect.any(Function),
@@ -28,7 +27,7 @@ describe('mediaQuery', () => {
 });
 
 describe('above', () => {
-  const { above } = mediaQuery(breakpoints, 'px');
+  const { above } = builder(breakpoints, 'px');
 
   it('should return a function', () => {
     expect(above('md')).toStrictEqual(expect.any(Function));
@@ -50,9 +49,18 @@ describe('above', () => {
   is defined in the function call`, () => {
     const Component = styled.h1`
       color: #000000;
-      ${above('lg')`color: #FAF712;`}
-      ${above('768')`color: #12F7FA;`}
-      ${above(576)`color: #F712FA;`}
+
+      ${above('lg')`
+        color: #FAF712;
+      `}
+
+      ${above('768')`
+        color: #12F7FA;
+      `}
+
+      ${above(576)`
+        color: #F712FA;
+      `}
     `;
 
     render(<Component>Hello, world!</Component>);
@@ -74,8 +82,14 @@ describe('above', () => {
   is defined in the function call + the antiOverlap property`, () => {
     const Component = styled.h1`
       color: #000000;
-      ${above('lg', 1)`color: #FAF712;`}
-      ${above('md', '2')`color: #12F7FA;`}
+
+      ${above('lg', 1)`
+        color: #FAF712;
+      `}
+
+      ${above('md', '2')`
+        color: #12F7FA;
+      `}
     `;
 
     render(<Component>Hello, world!</Component>);
@@ -99,8 +113,12 @@ describe('above', () => {
     const Component = styled.h1`
       color: #000000;
       // typescript issue
-      ${above('lg')`${colorKeyOne}: ${colorValueOne};`}
-      ${above(768, 1)`${`${colorKeyTwo} ${colorValueTwo}`};`}
+      ${above('lg')`
+        ${colorKeyOne}: ${colorValueOne};
+      `}
+
+      ${above(768, 1)`
+        ${`${colorKeyTwo} ${colorValueTwo}`};`}
     `;
 
     render(<Component>Hello, world!</Component>);
@@ -117,7 +135,7 @@ describe('above', () => {
 });
 
 describe('below', () => {
-  const { below } = mediaQuery(breakpoints, 'rem');
+  const { below } = builder(breakpoints, 'rem');
 
   it('should return a function', () => {
     expect(below('md')).toStrictEqual(expect.any(Function));
@@ -139,9 +157,18 @@ describe('below', () => {
   is defined in the function call`, () => {
     const Component = styled.h1`
       color: #000000;
-      ${below('lg')`color: #FAF712;`}
-      ${below('768')`color: #12F7FA;`}
-      ${below(576)`color: #F712FA;`}
+
+      ${below('lg')`
+        color: #FAF712;
+      `}
+
+      ${below('768')`
+        color: #12F7FA;
+      `}
+
+      ${below(576)`
+        color: #F712FA;
+      `}
     `;
 
     render(<Component>Hello, world!</Component>);
@@ -163,8 +190,14 @@ describe('below', () => {
   is defined in the function call + the antiOverlap property`, () => {
     const Component = styled.h1`
       color: #000000;
-      ${below('lg', 1)`color: #FAF712;`}
-      ${below('md', '2')`color: #12F7FA;`}
+
+      ${below('lg', 1)`
+        color: #FAF712;
+      `}
+
+      ${below('md', '2')`
+        color: #12F7FA;
+      `}
     `;
 
     render(<Component>Hello, world!</Component>);
@@ -188,8 +221,14 @@ describe('below', () => {
     const Component = styled.h1`
       color: #000000;
       // typescript issue
-      ${below('lg')`${colorKeyOne}: ${colorValueOne};`}
-      ${below(768, 1)`${`${colorKeyTwo} ${colorValueTwo}`};`}
+
+      ${below('lg')`
+        ${colorKeyOne}: ${colorValueOne};
+      `}
+
+      ${below(768, 1)`
+        ${`${colorKeyTwo} ${colorValueTwo}`};
+      `}
     `;
 
     render(<Component>Hello, world!</Component>);
@@ -206,7 +245,7 @@ describe('below', () => {
 });
 
 describe('between', () => {
-  const { between } = mediaQuery(breakpoints, 'px');
+  const { between } = builder(breakpoints, 'px');
 
   it('should return a function', () => {
     expect(between(['lg', 'sm'])).toStrictEqual(expect.any(Function));
@@ -223,8 +262,12 @@ describe('between', () => {
   what is defined in the function call`, () => {
     const Component = styled.h1`
       color: #000000;
-      ${between(['lg', 'md'])`color: #FAF712;`};
+
+      ${between(['lg', 'md'])`
+        color: #FAF712;
+      `};
     `;
+
     render(<Component>Hello, world!</Component>);
     const component = screen.getByRole('heading');
 
@@ -241,7 +284,9 @@ describe('between', () => {
     const Component = styled.h1`
       color: #000000;
       // typescript issue
-      ${between([768, 1])`${`${colorKey} ${colorValue}`};`}
+      ${between([768, 1])`
+        ${`${colorKey} ${colorValue}`};
+      `}
     `;
 
     render(<Component>Hello, world!</Component>);
