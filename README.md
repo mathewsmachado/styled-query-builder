@@ -6,7 +6,7 @@
 
 Sometimes, working with media queries isn't easy. It's hard to remember what "min-width" or "max-width" stand for, if the styles will be applied if the screen is smaller or bigger than the specified. This is what [styled-query-builder](https://github.com/MathewsMachado/styled-query-builder) aims to solve. With this tool, you can write media queries in a semantic way.
 
-[styled-query-builder](https://github.com/MathewsMachado/styled-query-builder) is a library made to work alongside [styled-components](https://styled-components.com/).
+[styled-query-builder](https://github.com/MathewsMachado/styled-query-builder) is a library made to work alongside [styled-components](https://styled-components.com).
 
 ## Why use it?
 
@@ -43,13 +43,13 @@ yarn add styled-query-builder
 
 ## Usage
 
-This library has, as default, the following [breakpoints](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/index.ts#L3):
+This library has, as default, the following breakpoints:
 
 <br>
 <img alt="breakpoints" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/usage-breakpoints.png" width="500px" />
 <br>
 
-and "px" as [size unit](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/index.ts#L9).
+and "px" as size unit.
 
 ### Disclaimer
 
@@ -68,7 +68,7 @@ but want different breakpoints, you will also have to use the ["builder()"](http
 
 ### API
 
-#### **[above](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts#L17)([size](https://github.com/MathewsMachado/styled-query-builder/#size), [antiOverlap?](https://github.com/MathewsMachado/styled-query-builder/#antioverlap))**
+#### **[above](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts)([size](https://github.com/MathewsMachado/styled-query-builder/#size), [antiOverlap?](https://github.com/MathewsMachado/styled-query-builder/#antioverlap))**
 
 This function applies the style if the screen is bigger than the informed size. It is equivalent to "`@media (min-width: ...)`".
 
@@ -76,7 +76,7 @@ This function applies the style if the screen is bigger than the informed size. 
 <img alt="above function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-above.png" width="500px" />
 <br>
 
-#### **[below](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts#L26)([size](https://github.com/MathewsMachado/styled-query-builder/#size), [antiOverlap?](https://github.com/MathewsMachado/styled-query-builder/#antioverlap))**
+#### **[below](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts)([size](https://github.com/MathewsMachado/styled-query-builder/#size), [antiOverlap?](https://github.com/MathewsMachado/styled-query-builder/#antioverlap))**
 
 This function applies the style if the screen is smaller than the informed size. It is equivalent to "`@media (max-width: ...)`".
 
@@ -84,7 +84,7 @@ This function applies the style if the screen is smaller than the informed size.
 <img alt="below function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/api-below.png" width="500px" />
 <br>
 
-#### **[between](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts#L35)([sizes](https://github.com/MathewsMachado/styled-query-builder/#sizes))**
+#### **[between](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/index.ts)([sizes](https://github.com/MathewsMachado/styled-query-builder/#sizes))**
 
 This function applies the style if the screen size is between the informed sizes. It is equivalent to "`@media (min-width: ...) and (max-width: ...)`".
 
@@ -110,7 +110,7 @@ This function is for who wants custom breakpoints or use "rem" as size unit. You
 
 ### Functions Parameters
 
-#### **[antiOverlap?](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L18)**
+#### **[antiOverlap?](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.d.ts)**
 
 If, somehow, you use two media queries that "bump" each other, like:
 
@@ -124,23 +124,23 @@ You can use this property to solve this issue. If you are calling the "[below()]
 <img alt="below function" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/param-anti-overlap-2.png" width="500px" />
 <br>
 
-#### **[mediaQueryType](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L12)**
+#### **[mediaQueryType](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts)**
 
 It can be the following values: "above", "below" or "between".
 
-#### **[size](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L14)**
+#### **[size](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts)**
 
 It can be one of the keys of the breakpoints (the default ones or the ones provided by the user), or a value indicating a size.
 
-#### **[sizes](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L16)**
+#### **[sizes](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts)**
 
 It can be a [size](https://github.com/MathewsMachado/styled-query-builder/#size) or a [size array](https://github.com/MathewsMachado/styled-query-builder/#size) with two values.
 
-#### **[sizeUnit](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L5)**
+#### **[sizeUnit](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts)**
 
 It can be the following values: "px" or "rem".
 
-#### **[userBreakpoints](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts#L3)**
+#### **[userBreakpoints](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/types.ts)**
 
 It can be an object like the [default breakpoints](https://github.com/MathewsMachado/styled-query-builder/#usage), with how many breakpoints the user wants.
 
@@ -170,24 +170,26 @@ yarn
 
 ## To-Do
 
-- Improve code completion
-- Improve regex at ["hasLettersAndNumbers"](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/helpers/index.ts#L1)
-- When publishing the package, make the examples use the published version
+- Improve regex at ["hasLettersAndNumbers"](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/helpers).
+- When publishing the package, make the [examples]("https://github.com/MathewsMachado/styled-query-builder/tree/main/docs/examples") use the published version.
 
 - Docs: Fix the Eslint error that only allows the examples to run if there are the node_modules folder in the root directory.
 
-- Tests: Look for general improvements
+- Tests: Look for general improvements.
 
-- Typing: Look for general improvements
-- Typing: Fix the errors across the codebase, which are marked as "// typescript issue". The items 2, 3 and 4 below are related.
-  1. on [mediaQueryTypeMapper](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/breakpoint/index.ts#L37)
-  2. on [mediaQuery tests](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/test.tsx#L99)
-  3. on [mediaQuery tests](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/test.tsx#L188)
-  4. on [mediaQuery tests](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/test.tsx#L241)
+- Typing: Improve typing. Now, there are no code completion and no syntax highlight due to it.
+- Typing: Integrate better with [styled-components](https://styled-components.com/).
+- Typing: Fix the errors across the codebase, which are marked as "// typescript issue". The items 2, 3 and 4 below are related and on the same file.
+  1. on [mediaQueryTypeMapper](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/breakpoint/index.ts)
+  2. on [mediaQuery tests](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/test.tsx)
+  3. on [mediaQuery tests](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/test.tsx)
+  4. on [mediaQuery tests](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/mediaQuery/test.tsx)
 
 ## Contribution
 
-This project is accepting contributions, the aim is to clean the [to-do](https://github.com/MathewsMachado/styled-query-builder/#to-do) list. Feel free to open an issue or submit a pull request. In the case of a pull request, explain well what you are doing and create tests for it.
+This project is accepting contributions, the aim is to clean the [to-do](https://github.com/MathewsMachado/styled-query-builder/#to-do) list. We are really needing help with typing.
+
+Feel free to open an issue or submit a pull request. In the case of a pull request, explain well what you are doing and create tests for it.
 
 ## Acknowledgement
 
