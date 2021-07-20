@@ -2,6 +2,20 @@
   <img alt="logo" src="https://github.com/MathewsMachado/styled-query-builder/blob/main/docs/images/logo.png" width="250px" />
 </div>
 
+<br>
+
+<div align="center">
+  <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/mathewsmachado/styled-query-builder/CI">
+
+  <img alt="Codecov" src="https://img.shields.io/codecov/c/github/mathewsmachado/styled-query-builder">
+
+  <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/styled-query-builder">
+
+  <img alt="Dependencies" src="https://img.shields.io/badge/Dependencies-0-green">
+
+  <img alt="NPM" src="https://img.shields.io/npm/l/styled-query-builder">
+</div>
+
 <h2 align="center">styled-query-builder 🔨</h2>
 
 Sometimes, working with media queries isn't easy. It's hard to remember what "min-width" or "max-width" stand for, if the styles will be applied if the screen is smaller or bigger than the specified. This is what [styled-query-builder](https://github.com/MathewsMachado/styled-query-builder) aims to solve. With this tool, you can write media queries in a semantic way.
