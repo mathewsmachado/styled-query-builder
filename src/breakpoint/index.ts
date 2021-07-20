@@ -1,7 +1,7 @@
 import { hasLettersAndNumbers } from 'helpers';
 import {
   AntiOverlap,
-  Breakpoint,
+  BreakpointGenerator,
   Breakpoints,
   MediaQueryType,
   Size,
@@ -9,7 +9,10 @@ import {
   SizeUnit,
 } from 'types';
 
-function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
+function breakpoint(
+  userBreakpoints: Breakpoints,
+  sizeUnit: SizeUnit
+): BreakpointGenerator {
   const simple = {
     size(size: Size): number {
       if (hasLettersAndNumbers(size)) {
@@ -21,11 +24,11 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
         return Number(size);
       }
 
-      if (!breakpoints[size]) {
-        throw new Error(`"${size}" was not found on breakpoints object`);
+      if (!userBreakpoints[size]) {
+        throw new Error(`"${size}" was not found on "userBreakpoints" object`);
       }
 
-      return Number(breakpoints[size]);
+      return Number(userBreakpoints[size]);
     },
 
     antiOverlap(antiOverlap: AntiOverlap) {
@@ -82,7 +85,7 @@ function breakpoint(breakpoints: Breakpoints, sizeUnit: SizeUnit): Breakpoint {
     },
   };
 
-  return function breakpointFunction(mediaQueryType, sizes, antiOverlap = 0) {
+  return function breakpointGenerator(mediaQueryType, sizes, antiOverlap = 0) {
     if (mediaQueryType === 'between') {
       composed.antiOverlap(antiOverlap);
       return composed.stringGenerator(...composed.size(sizes));
