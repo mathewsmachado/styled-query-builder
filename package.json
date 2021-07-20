@@ -1,6 +1,6 @@
 {
   "name": "styled-query-builder",
-  "version": "1.0.0",
+  "version": "1.0.16",
   "description": "A semantic tool to help you build responsive interfaces with Styled Components",
   "author": "Mathews Machado <mw.dev.io@gmail.com>",
   "license": "MIT",
