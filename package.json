@@ -2,23 +2,11 @@
   "name": "styled-query-builder",
   "version": "1.0.0",
   "description": "A semantic tool to help you build responsive interfaces with Styled Components",
+  "author": "Mathews Machado <mw.dev.io@gmail.com>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/MathewsMachado/styled-query-builder"
-  },
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/types.d.ts",
-  "scripts": {
-    "prebuild": "rm -rf dist",
-    "build": "rollup -c",
-    "postbuild": "cp src/types.ts dist/types.d.ts",
-    "typecheck": "tsc",
-    "typo": "cspell --no-progress --no-must-find-files",
-    "lint": "eslint src --fix --ignore-path .gitignore",
-    "test": "jest --maxWorkers=50%",
-    "test:watch": "jest --watch --maxWorkers=25%",
-    "prepare": "husky install"
   },
   "keywords": [
     "react",
@@ -26,12 +14,25 @@
     "css",
     "css-in-js",
     "media-query",
+    "breakpoint",
     "responsive",
     "interface",
     "ui"
   ],
-  "author": "Mathews Machado <mathews.machadoamorim@gmail.com>",
-  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "prebuild": "rm -rf dist/",
+    "build": "rollup -c",
+    "postbuild": "cp src/types.d.ts dist/",
+    "typecheck": "tsc",
+    "typo": "cspell --no-progress --no-must-find-files",
+    "lint": "eslint src --fix --ignore-path .gitignore",
+    "test": "jest --maxWorkers=50%",
+    "test:watch": "jest --watch --maxWorkers=25%",
+    "prepare": "husky install"
+  },
   "peerDependencies": {
     "styled-components": "^5.3.0"
   },
