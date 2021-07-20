@@ -21,6 +21,7 @@
     "willian",
     "machado",
     "typecheck",
-    "env"
+    "env",
+    "codecov"
   ]
 }
