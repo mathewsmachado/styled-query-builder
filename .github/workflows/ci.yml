@@ -63,7 +63,7 @@ jobs:
         run: yarn build
 
       - name: Publish
-        run: npx semantic-release --debug
+        run: npx semantic-release --debug --branches main
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
