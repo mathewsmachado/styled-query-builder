@@ -22,22 +22,22 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn
+        run: npm install
 
       - name: Check typos
-        run: yarn typo
+        run: npm run typo
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
 
       - name: Typecheck
-        run: yarn typecheck
+        run: npm run typecheck
 
       - name: Test
-        run: yarn test
+        run: npm run test
 
       - name: Upload code coverage to Codecov
         uses: codecov/codecov-action@v1
@@ -54,13 +54,13 @@ jobs:
         with:
           node-version: 14.x
           registry-url: 'https://registry.npmjs.org'
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn
+        run: npm install
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
       - name: Publish
         run: npx semantic-release --debug --branches main
