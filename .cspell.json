@@ -24,6 +24,8 @@
     "env",
     "codecov",
     "npx",
-    "gh"
+    "gh",
+    "npmjs",
+    "npmrc"
   ]
 }

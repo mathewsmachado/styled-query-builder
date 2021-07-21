@@ -63,7 +63,9 @@ jobs:
         run: npm run build
 
       - name: Publish
-        run: npx semantic-release --debug --branches main
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+          npx semantic-release --debug --branches main
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
