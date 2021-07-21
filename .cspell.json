@@ -22,6 +22,8 @@
     "machado",
     "typecheck",
     "env",
-    "codecov"
+    "codecov",
+    "npx",
+    "gh"
   ]
 }
