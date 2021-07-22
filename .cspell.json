@@ -2,14 +2,7 @@
   "language": "en",
   "minWordLength": 2,
   "files": ["**/*"],
-  "ignorePaths": [
-    "dist",
-    "coverage",
-    "**/*.lock",
-    "**/*.json",
-    "*.config.*",
-    "*/**/*.svg"
-  ],
+  "ignorePaths": ["dist", "coverage", "docs", "package*"],
   "words": [
     "img",
     "nocheck",
@@ -21,11 +14,6 @@
     "willian",
     "machado",
     "typecheck",
-    "env",
-    "codecov",
-    "npx",
-    "gh",
-    "npmjs",
-    "npmrc"
+    "codecov"
   ]
 }
