@@ -10447,6 +10447,11 @@ styled-components@^5.3.0:
     shallowequal "^1.1.0"
     supports-color "^5.5.0"
 
+styled-query-builder@^1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/styled-query-builder/-/styled-query-builder-1.0.19.tgz#c9d73020c68aa2ec988bf3a4775c34fe755116d9"
+  integrity sha512-NOzMBvdHKvxH03f3SNMNzQZXLc4o/J3X99nKNkEr+SFs6gVjTurClDfdoUHUTTGnKGPuVFRvVTTr3NJ4kIosKg==
+
 stylehacks@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/stylehacks/-/stylehacks-4.0.3.tgz#6718fcaf4d1e07d8a1318690881e8d96726a71d5"

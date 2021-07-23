@@ -1,7 +1,9 @@
+// @ts-nocheck
 import styled from 'styled-components';
+import { above, below, between, breakpoints } from 'styled-query-builder';
+
 import logo from './logo.svg';
 
-import { above, below, between, breakpoints } from './dist/index.esm';
 const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
@@ -28,7 +30,7 @@ const Title = styled.h1`
     font-size: 64px;
   `};
 
-  ${between(['780', 0])`
+  ${between(['0', 780])`
     font-size: 32px;
   `};
 `;

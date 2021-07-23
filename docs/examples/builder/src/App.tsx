@@ -1,6 +1,8 @@
+// @ts-nocheck
 import styled from 'styled-components';
+import { builder } from 'styled-query-builder';
+
 import logo from './logo.svg';
-import { builder } from './dist/index.esm';
 
 const { above, below, between, breakpoints } = builder(
   { sm: 36, md: 48, lg: 64, xlg: 80 },
@@ -36,7 +38,7 @@ const Title = styled.h1`
     font-size: 4rem;
   `};
 
-  ${above('xl')`
+  ${above('xlg')`
     font-size: 8rem;
   `};
 `;

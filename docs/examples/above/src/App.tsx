@@ -1,6 +1,8 @@
+// @ts-nocheck
 import styled from 'styled-components';
+import { above } from 'styled-query-builder';
+
 import logo from './logo.svg';
-import { above } from './dist/index.esm';
 
 const Wrapper = styled.div`
   width: 100vw;

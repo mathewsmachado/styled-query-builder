@@ -1,6 +1,7 @@
+// @ts-nocheck
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { below, breakpoints } from './dist/index.esm';
+import { below, breakpoints } from 'styled-query-builder';
 
 type BlockProps = {
   currentScreenWidth: number;

@@ -185,7 +185,6 @@ yarn
 ## To-Do
 
 - Improve regex at ["hasLettersAndNumbers"](https://github.com/MathewsMachado/styled-query-builder/blob/main/src/helpers).
-- When publishing the package, make the [examples]("https://github.com/MathewsMachado/styled-query-builder/tree/main/docs/examples") use the published version.
 
 - Docs: Fix the Eslint error that only allows the examples to run if there are the node_modules folder in the root directory.
 
