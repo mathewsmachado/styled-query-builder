@@ -29,7 +29,7 @@
     "prebuild": "rm -rf dist/",
     "build": "rollup -c",
     "postbuild": "cp src/types.d.ts dist/",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "typecheck": "tsc",
     "typo": "cspell --no-progress --no-must-find-files",
     "lint": "eslint src --fix --ignore-path .gitignore",
