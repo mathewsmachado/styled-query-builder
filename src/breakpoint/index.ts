@@ -62,8 +62,10 @@ function breakpoint(
 
   const composed = {
     size(sizes: Sizes): [number, number] {
-      if (!Array.isArray(sizes)) {
-        throw new Error('Parameter "sizes" must be an array');
+      if (!Array.isArray(sizes) || !sizes[1]) {
+        throw new Error(
+          'Parameter "sizes" must be an array with two positions'
+        );
       }
 
       return [simple.size(sizes[0]), simple.size(sizes[1])];

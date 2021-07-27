@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { breakpoint } from '.';
 
 describe('breakpoint', () => {
@@ -54,8 +56,11 @@ describe('breakpoint', () => {
   });
 
   it(`should throw an error if media query type be 'between' and 'sizes'
-  property don't be an array`, () => {
+  property don't be an array with two positions`, () => {
     expect(() => breakpoints('between', '1024')).toThrow();
     expect(() => breakpoints('between', 1024)).toThrow();
+
+    expect(() => breakpoints('between', ['1024'])).toThrow();
+    expect(() => breakpoints('between', [1024])).toThrow();
   });
 });
